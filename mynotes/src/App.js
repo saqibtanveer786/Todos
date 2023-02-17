@@ -1,24 +1,23 @@
-import logo from './logo.svg';
+
 import './App.css';
 
 function App() {
+  const submitted = ()=>{
+    const url = 'http://localhost:5000/api/v1/auth/signup'
+    const response = fetch(url, {
+      c
+    })
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className='signup-form'>
+          <form onSubmit={submitted}>
+              <input type="text" name='name'/>
+              <input type="email" name='email'/>
+              <input type="password" name='password'/>
+          </form>
+      </div>
+    </>
   );
 }
 
