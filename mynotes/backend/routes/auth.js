@@ -12,9 +12,9 @@ const secret = 'secret'
 // Route: 1 Registration
 // This end point is to register user: "Post"  Atuntication not require Login also
 router.post('/signup',
-  // body('email', 'Envalid Email').isEmail(),
-  // body('name', 'Envalid Name').isLength({ min: 3 }),
-  // body('password', 'Password should be atleast five characters').isLength({ min: 5 }),
+  body('email', 'Envalid Email').isEmail(),
+  body('name', 'Envalid Name').isLength({ min: 3 }),
+  body('password', 'Password should be atleast five characters').isLength({ min: 5 }),
 async (req, res) => {
 
     //Getting user information from request: Using destructuring
@@ -22,10 +22,10 @@ async (req, res) => {
     console.log(name,email,password)
 
     //Checking Errors : if there are errors then return bad request.
-    // const errors = validationResult(req);
-    // if (!errors.isEmpty()) {
-    //   return res.status(400).json({ errors: errors.array() });
-    // }
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
 
     //checking whether user with this already exists or not.
     const checkingUsers = await User.findOne({ email })
